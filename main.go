@@ -80,7 +80,7 @@ func checkApp(appID string) {
 		send("Can't get info about app: " + appID)
 	} else {
 		for _, stage := range stages {
-			if stage.ExecutorRunTime > longExecution {
+			if stage.ExecutorRunTime > longExecution && stage.Status == "ACTIVE" {
 				send("Long executing stage in app " + appID)
 			}
 		}
