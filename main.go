@@ -19,6 +19,7 @@ var longExecution int64
 type stage struct {
 	Status          string `json:"status"`
 	ExecutorRunTime int64  `json:"executorRunTime"`
+	NumFailedTasks  int32  `json:"numFailedTasks"`
 }
 
 type app struct {
@@ -80,8 +81,8 @@ func checkApp(appID string) {
 		send("Can't get info about app: " + appID)
 	} else {
 		for _, stage := range stages {
-			if stage.ExecutorRunTime > longExecution && stage.Status == "ACTIVE" {
-				send("Long executing stage in app " + appID)
+			if stage.NumFailedTasks > 0 && stage.Status == "ACTIVE" {
+				send("Job has failed tasks in app: " + appID)
 			}
 		}
 	}
