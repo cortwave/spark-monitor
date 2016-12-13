@@ -35,12 +35,11 @@ func main() {
 
 func initVars() {
 	appsCount = initInt("APP_COUNT")
-	host = os.Getenv("DRIVER_ADDRESS")
+	host = initString("DRIVER_ADDRESS")
 	publisherAddress := initString("PUBLISHER_ADDRESS")
 	publisherURL = "http://" + publisherAddress + "/publish"
-	channel = os.Getenv("CHANNEL")
 	period = initInt("PERIOD")
-	messagePrefix = initString("MESSAGE_PREFIX")
+	messagePrefix = os.Getenv("MESSAGE_PREFIX")
 }
 
 func initString(name string) string {
