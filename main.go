@@ -14,7 +14,7 @@ var host string
 var publisherURL string
 var channel string
 var period int
-var longExecution int64
+var messagePrefix string
 
 type stage struct {
 	Status          string `json:"status"`
@@ -40,7 +40,7 @@ func initVars() {
 	publisherURL = "http://" + publisherAddress + "/publish"
 	channel = os.Getenv("CHANNEL")
 	period = initInt("PERIOD")
-	longExecution = int64(initInt("LONG_EXECUTION")) * 1000
+	messagePrefix = initString("MESSAGE_PREFIX")
 }
 
 func initString(name string) string {
@@ -89,7 +89,7 @@ func checkApp(appID string) {
 }
 
 func send(text string) {
-	textToSend := time.Now().Format(time.Kitchen) + ": " + text
+	textToSend := time.Now().Format(time.Kitchen) + "[" + messagePrefix + "]: " + text
 	sendNotification(textToSend, publisherURL)
 }
 
