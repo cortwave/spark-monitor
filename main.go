@@ -46,7 +46,7 @@ func initVars() {
 func initString(name string) string {
 	val := os.Getenv(name)
 	if val == "" {
-		panic("No publisher provided")
+		panic("No " + name + " provided")
 	}
 	return val
 }
