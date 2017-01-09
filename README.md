@@ -1,6 +1,7 @@
 # spark-monitor
 lightweight daemon for monitoring and notification about spark problems
 
+[![Build Status](https://travis-ci.org/cortwave/spark-monitor.svg?branch=master)](https://travis-ci.org/cortwave/spark-monitor)
 
 ## Build (optionally, needed to update ca-certificates)
 
