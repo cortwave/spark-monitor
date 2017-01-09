@@ -1,0 +1,10 @@
+sudo: required
+dist: trusty
+
+language: go
+go:
+  - 1.6
+
+script:
+    # ensure no output
+    - ./build.sh
